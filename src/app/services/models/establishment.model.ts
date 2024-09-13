@@ -1,3 +1,5 @@
+import { FormGroup } from "@angular/forms";
+
 export interface Establishment {
     id: string;
     name: string;
@@ -18,4 +20,17 @@ export class Establishment implements Establishment {
         public motorcycleSpots: number,
         public carSpots: number
     ) { }
+
+    static fromForm(form: FormGroup): Establishment {
+        const formValues = form.getRawValue();
+        return new Establishment(
+          formValues.id,
+          formValues.name,
+          formValues.cnpj,
+          formValues.address,
+          formValues.phone,
+          formValues.motorcycleSpots,
+          formValues.carSpots
+        );
+      }
 }
