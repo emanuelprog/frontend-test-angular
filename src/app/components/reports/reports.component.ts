@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ReportService } from '../../services/reports/report.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reports',
@@ -20,7 +21,7 @@ export class ReportsComponent {
   hourlySummary: any;
   vehicleMovements: any;
 
-  constructor(private reportService: ReportService) {}
+  constructor(private reportService: ReportService, private snackBar: MatSnackBar) {}
 
   getSummary() {
     this.reportService.getParkingSummary(this.establishmentId).subscribe({
@@ -28,7 +29,7 @@ export class ReportsComponent {
         this.summary = data;
       },
       error: (err) => {
-        console.error('Error fetching parking summary:', err);
+        this.onMessage(err.error.message, '', 2000);
       }
     });
   }
@@ -39,7 +40,7 @@ export class ReportsComponent {
         this.hourlySummary = data;
       },
       error: (err) => {
-        console.error('Error fetching hourly parking summary:', err);
+        this.onMessage(err.error.message, '', 2000);
       }
     });
   }
@@ -50,8 +51,12 @@ export class ReportsComponent {
         this.vehicleMovements = data;
       },
       error: (err) => {
-        console.error('Error fetching vehicle movement report:', err);
+        this.onMessage(err.error.message, '', 2000);
       }
     });
+  }
+
+  private onMessage(message: string, action: string, duration: number) {
+    this.snackBar.open(message, action, { duration: duration, verticalPosition: 'top', horizontalPosition: 'left' })
   }
 }
