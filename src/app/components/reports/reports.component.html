@@ -1,0 +1,81 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Parking Reports</h2>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-6">
+      <label for="establishmentId" class="form-label">Establishment ID:</label>
+      <input type="text" [(ngModel)]="establishmentId" id="establishmentId" class="form-control" placeholder="Enter the establishment ID">
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-6 text-center">
+      <button (click)="getSummary()" class="btn btn-primary w-100">Get Summary</button>
+    </div>
+  </div>
+
+  <div *ngIf="summary" class="row justify-content-center mb-3">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Parking Summary</h3>
+          <p class="card-text">Total Entries: {{ summary.totalEntries }}</p>
+          <p class="card-text">Total Outputs: {{ summary.totalExits }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-6 text-center">
+      <button (click)="getHourlySummary()" class="btn btn-secondary w-100">Get Timetable Summary</button>
+    </div>
+  </div>
+
+  <div *ngIf="hourlySummary" class="row justify-content-center mb-3">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Hourly Summary</h3>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let hour of hourlySummary">
+              {{ hour.hour }} - Entries: {{ hour.entries }}, Outputs: {{ hour.exits }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-3">
+      <label for="startDate" class="form-label">Start Date:</label>
+      <input type="date" [(ngModel)]="startDate" id="startDate" class="form-control">
+    </div>
+    <div class="col-md-3">
+      <label for="endDate" class="form-label">End Date:</label>
+      <input type="date" [(ngModel)]="endDate" id="endDate" class="form-control">
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-6 text-center">
+      <button (click)="getVehicleMovements()" class="btn btn-success w-100">Get Vehicle Movements</button>
+    </div>
+  </div>
+
+  <div *ngIf="vehicleMovements" class="row justify-content-center mb-3">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Vehicle Movements</h3>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let movement of vehicleMovements">
+              Date: {{ movement.date }}, Type: {{ movement.type }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

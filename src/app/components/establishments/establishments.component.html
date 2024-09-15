@@ -8,22 +8,22 @@
             <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
-        
+
             <ng-container matColumnDef="address">
             <th mat-header-cell *matHeaderCellDef> Address </th>
             <td mat-cell *matCellDef="let element"> {{element.address}} </td>
             </ng-container>
-        
+
             <ng-container matColumnDef="phone">
             <th mat-header-cell *matHeaderCellDef> Phone </th>
             <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
             </ng-container>
-        
+
             <ng-container matColumnDef="motorcycleSpots">
             <th mat-header-cell *matHeaderCellDef> Motorcycle Spots </th>
             <td mat-cell *matCellDef="let element"> {{element.motorcycleSpots}} </td>
             </ng-container>
-        
+
             <ng-container matColumnDef="carSpots">
             <th mat-header-cell *matHeaderCellDef> Car Spots </th>
             <td mat-cell *matCellDef="let element"> {{element.carSpots}} </td>
@@ -36,7 +36,7 @@
                 <button type="button" class="btn btn-danger" (click)="openConfirmDeleteModal(element, confirmDelete)">Delete</button>
             </td>
             </ng-container>
-        
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
@@ -50,7 +50,7 @@
     <div class="modal-body">
       <form [formGroup]="establishmentForm">
         <div class="mb-3">
-          <label for="moaNamei" class="form-label">Name</label>
+          <label for="establishmentName" class="form-label">Name</label>
           <input type="text" class="form-control" id="establishmentName" formControlName="name" required>
         </div>
         <div class="mb-3">

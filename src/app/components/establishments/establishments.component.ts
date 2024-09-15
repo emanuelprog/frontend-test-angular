@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import { EstablishmentService } from '../../services/establishments/establishment.service';
-import { Establishment } from '../../services/models/establishment.model';
+import { Establishment } from '../../models/establishment.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './establishments.component.scss'
 })
 export class EstablishmentsComponent implements OnInit {
-  
+
   displayedColumns: string[] = ['name', 'address', 'phone', 'motorcycleSpots', 'carSpots', 'options'];
   dataSource: Establishment[] = [];
   @ViewChild('createEstablishment') createEstablishment!: TemplateRef<any>;
