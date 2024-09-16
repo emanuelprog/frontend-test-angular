@@ -23,7 +23,7 @@ export class VehiclesComponent implements OnInit {
   vehicleEdit: Vehicle | undefined;
   vehicleDelete: Vehicle | null = null;
   vehicleForm: FormGroup;
-  types = ['CAR', 'MOTOCYCLE']
+  types = ['CAR', 'MOTORCYCLE']
 
   constructor(
     private service: VehicleService,
@@ -141,7 +141,7 @@ export class VehiclesComponent implements OnInit {
       this.service.update(this.vehicleEdit.id, vehicle).subscribe({
         next: data => {
           if (data) {
-            this.onMessage('Success to create', '', 2000);
+            this.onMessage('Success to edit', '', 2000);
             this.closeModal();
             this.findVehicles();
           }

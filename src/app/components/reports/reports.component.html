@@ -36,14 +36,14 @@
     </div>
   </div>
 
-  <div *ngIf="hourlySummary" class="row justify-content-center mb-3">
+  <div *ngIf="hourlySummary.length > 0" class="row justify-content-center mb-3">
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Hourly Summary</h3>
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let hour of hourlySummary">
-              {{ hour.hour }} - Entries: {{ hour.entries }}, Outputs: {{ hour.exits }}
+              {{ hour.hour }} - Entries: {{ hour.totalEntries }}, Outputs: {{ hour.totalExits }}
             </li>
           </ul>
         </div>
@@ -75,7 +75,9 @@
           <h3 class="card-title">Vehicle Movements</h3>
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let movement of vehicleMovements">
-              Date: {{ movement.date }}, Type: {{ movement.type }}
+              Vehicle Plate: {{ movement.vehiclePlate }}<br>
+              Entry Date: {{ movement.entryDate | date: 'dd/MM/yyyy HH:mm:ss' }}<br>
+              Exit Date: {{ movement.exitDate ? (movement.exitDate | date: 'dd/MM/yyyy HH:mm:ss') : 'N/A' }}
             </li>
           </ul>
         </div>

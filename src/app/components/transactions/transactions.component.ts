@@ -23,8 +23,6 @@ export class TransactionsComponent implements OnInit {
   constructor(
     private service: TransactionService,
     private establishmentService: EstablishmentService,
-    private fb: FormBuilder,
-    private modalService: NgbModal,
     private snackBar: MatSnackBar
     ) {
     }
