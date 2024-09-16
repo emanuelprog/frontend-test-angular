@@ -23,6 +23,7 @@ export class VehiclesComponent implements OnInit {
   vehicleEdit: Vehicle | undefined;
   vehicleDelete: Vehicle | null = null;
   vehicleForm: FormGroup;
+  types = ['CAR', 'MOTOCYCLE']
 
   constructor(
     private service: VehicleService,

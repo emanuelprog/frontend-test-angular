@@ -112,6 +112,7 @@ export class EstablishmentsComponent implements OnInit {
     this.establishmentForm.patchValue({
       name: establishment.name,
       cnpj: establishment.cnpj,
+      address: establishment.address,
       phone: establishment.phone,
       motorcycleSpots: establishment.motorcycleSpots,
       carSpots: establishment.carSpots

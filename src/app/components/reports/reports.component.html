@@ -3,8 +3,12 @@
 
   <div class="row justify-content-center mb-3">
     <div class="col-md-6">
-      <label for="establishmentId" class="form-label">Establishment ID:</label>
-      <input type="text" [(ngModel)]="establishmentId" id="establishmentId" class="form-control" placeholder="Enter the establishment ID">
+      <label for="establishment-select">Select an establishment:</label>
+      <select id="establishment-select" class="form-select form-select-lg" [(ngModel)]="selectedEstablishment">
+        <option *ngFor="let establishment of establishments" [value]="establishment.id">
+          {{ establishment.name }}
+        </option>
+      </select>
     </div>
   </div>
 

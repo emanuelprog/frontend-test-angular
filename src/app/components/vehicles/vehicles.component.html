@@ -67,7 +67,11 @@
       </div>
       <div class="mb-3">
         <label for="vehicleType" class="form-label">Type</label>
-        <input type="text" class="form-control" id="vehicleType" formControlName="type" required>
+        <select id="vehicleType-select" class="form-select form-select-lg" formControlName="type">
+          <option *ngFor="let type of types" [value]="type">
+            {{ type }}
+          </option>
+        </select>
       </div>
       <div style="display: flex; justify-content: space-between;">
           <button type="submit" class="btn btn-primary" (click)="onSubmit()">{{ isEdit ? 'Save' : 'Create' }}</button>
